@@ -287,6 +287,16 @@ func TestProcessorEmptyJson(t *testing.T) {
 	require.Equal(t, output, "{}")
 }
 
+func TestProcessorEmptyArray(t *testing.T) {
+	output, err := ProcessorEmptyArray(&cMap, "Pickle Rick!")
+	require.Nil(t, err)
+	require.Equal(t, output, "[]")
+
+	output, err = ProcessorEmptyArray(&cMap, "[{\"name\": \"Pickle Rick!\"}]")
+	require.Nil(t, err)
+	require.Equal(t, output, "[]")
+}
+
 func TestRandomizeUUID(t *testing.T) {
 	tempUUID := uuid.New().String()
 	output, err := ProcessorRandomUUID(&cMap, tempUUID)

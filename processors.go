@@ -59,6 +59,7 @@ func init() {
 	ProcessorCatalog = map[string]ProcessorFunc{
 		"AlphaNumericScrambler": ProcessorAlphaNumericScrambler,
 		"EmptyJson":             ProcessorEmptyJson,
+		"EmptyArray":            ProcessorEmptyArray,
 		"FakeStreetAddress":     ProcessorAddress,
 		"FakeCity":              ProcessorCity,
 		"FakeCompanyName":       ProcessorCompanyName,
@@ -167,6 +168,11 @@ func ProcessorLastName(cmap *ColumnMapper, input string) (string, error) {
 // ProcessorEmptyJson will return an empty JSON no matter what is the input.
 func ProcessorEmptyJson(cmap *ColumnMapper, input string) (string, error) {
 	return "{}", nil
+}
+
+// ProcessorEmptyArray will return an empty array no matter what is the input.
+func ProcessorEmptyArray(cmap *ColumnMapper, input string) (string, error) {
+	return "[]", nil
 }
 
 // ProcessorPhoneNumber will return a phone number that is >= 0.4 Jaro-Winkler similar than the input.
